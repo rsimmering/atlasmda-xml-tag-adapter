@@ -1,0 +1,6 @@
+<primitives>
+    <primitive pim="string" psm="String"/>
+    <primitive pim="date" psm="java.util.Date"/>
+    <primitive pim="integer" psm="Integer"/>
+    <primitive pim="long" psm="Long"/>
+</primitives>

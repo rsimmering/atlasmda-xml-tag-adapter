@@ -1,0 +1,6 @@
+<context>
+    <inputs>
+        <model file="src/test/resources/tags.xml" adapter="org.atlas.model.adapter.xml.tag.TagAdapter"/>
+        <templates dir="src/test/resources/templates" />
+    </inputs>
+</context>
