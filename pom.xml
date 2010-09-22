@@ -23,9 +23,9 @@
       </distributionManagement>
 
 	<scm>
-	    <connection>scm:svn:http://atlas-mda.googlecode.com/svn/adapters/atlas-xml-tags/trunk</connection>
-	    <developerConnection>scm:svn:https://atlas-mda.googlecode.com/svn/adapters/atlas-xml-tags/trunk</developerConnection>
-	    <url>http://atlas-mda.googlecode.com/svn/adapters/atlas-xml-tags/trunk</url>
+	    <connection>scm:svn:http://atlas-mda.googlecode.com/svn/adapters/atlas-xml-tag-adapter/trunk</connection>
+	    <developerConnection>scm:svn:https://atlas-mda.googlecode.com/svn/adapters/atlas-xml-tag-adapter/trunk</developerConnection>
+	    <url>http://atlas-mda.googlecode.com/svn/adapters/atlas-xml-tag-adapter/trunk</url>
 	  </scm>  
    
       <repositories>
@@ -95,7 +95,7 @@
 		        <artifactId>maven-release-plugin</artifactId>
 		        <version>2.0</version>
 		        <configuration>
-		          <tagBase>https://atlas-mda.googlecode.com/svn/adapters/atlas-xml-tags/releases</tagBase>
+		          <tagBase>https://atlas-mda.googlecode.com/svn/adapters/atlas-xml-tag-adapter/releases</tagBase>
 		          <goals>deploy</goals>
 		        </configuration>
 	      	</plugin>
