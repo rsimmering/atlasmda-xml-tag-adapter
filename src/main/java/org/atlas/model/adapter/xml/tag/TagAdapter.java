@@ -9,16 +9,16 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.commons.digester.Digester;
-import org.atlas.mda.adapter.Adapter;
-import org.atlas.mda.adapter.AdapterException;
-import org.atlas.metamodel.Association;
-import org.atlas.metamodel.Boundary;
-import org.atlas.metamodel.Entity;
-import org.atlas.metamodel.Enumeration;
-import org.atlas.metamodel.Literal;
-import org.atlas.metamodel.Model;
-import org.atlas.metamodel.Property;
-import org.atlas.metamodel.Tag;
+import org.atlas.model.adapter.Adapter;
+import org.atlas.model.adapter.AdapterException;
+import org.atlas.model.metamodel.Association;
+import org.atlas.model.metamodel.Boundary;
+import org.atlas.model.metamodel.Entity;
+import org.atlas.model.metamodel.Enumeration;
+import org.atlas.model.metamodel.Literal;
+import org.atlas.model.metamodel.Model;
+import org.atlas.model.metamodel.Property;
+import org.atlas.model.metamodel.Tag;
 import org.xml.sax.SAXException;
 
 /**

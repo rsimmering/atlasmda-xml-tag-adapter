@@ -1,18 +1,11 @@
 <tags>
     <entity name="Student">
-        <tag name="table" value="T_STUDENT"/>
-        <tag name="findStudentByNumber" value="select s Student s where s.number=:number" type="namedQuery"/>
-        <tag name="findAllStudents" value="select s Student s" type="namedQuery"/>
+        <tag name="findUserByUsername" value="select s AppUser s where s.username=:username" type="namedQuery"/>
+        <tag name="findAllUsers" value="select s AppUser s" type="namedQuery"/>
         <property name="number">
             <tag name="column" value="C_NUMBER"/>
         </property>
     </entity>
-    <boundary name="StudentView">
-        <tag name="dialog" value="true"/>
-        <property name="number">
-            <tag name="input" value="textArea"/>
-        </property>
-    </boundary>
     <enumeration name="StudentType">
         <literal name="PartTime">
             <tag name="label" value="Part Time"/>

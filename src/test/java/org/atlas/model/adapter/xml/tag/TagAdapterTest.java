@@ -1,16 +1,17 @@
 package org.atlas.model.adapter.xml.tag;
 
+import org.atlas.engine.Context;
+import org.atlas.engine.ModelInput;
+import org.atlas.model.adapter.Adapter;
+import org.atlas.model.adapter.AdapterFactory;
 import org.atlas.model.adapter.xml.tag.TagAdapter;
+import org.atlas.model.metamodel.Boundary;
+import org.atlas.model.metamodel.Entity;
+import org.atlas.model.metamodel.Enumeration;
+import org.atlas.model.metamodel.Model;
+import org.atlas.model.metamodel.Property;
+
 import java.io.File;
-import org.atlas.mda.Context;
-import org.atlas.mda.ModelInput;
-import org.atlas.mda.adapter.Adapter;
-import org.atlas.mda.adapter.AdapterFactory;
-import org.atlas.metamodel.Boundary;
-import org.atlas.metamodel.Entity;
-import org.atlas.metamodel.Enumeration;
-import org.atlas.metamodel.Model;
-import org.atlas.metamodel.Property;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -67,11 +68,7 @@ public class TagAdapterTest {
         model.addEnumeration(en);
 
         Model result = a.adapt(f, model);
-        assertEquals(3, result.getEntity("Student").getTags().size());
-
-        assertEquals("true", result.getBoundary("StudentView").getTagValue("dialog"));
-
-        assertEquals("textArea", result.getBoundary("StudentView").getProperty("number").getTagValue("input"));
+        assertEquals(2, result.getEntity("Student").getTags().size());
 
         assertEquals("Part Time", result.getEnumeration("StudentType").getLiteral("PartTime").getTagValue("label"));
     }
