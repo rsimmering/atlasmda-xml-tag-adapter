@@ -17,6 +17,7 @@ import org.atlas.model.metamodel.Entity;
 import org.atlas.model.metamodel.Enumeration;
 import org.atlas.model.metamodel.Literal;
 import org.atlas.model.metamodel.Model;
+import org.atlas.model.metamodel.Operation;
 import org.atlas.model.metamodel.Property;
 import org.atlas.model.metamodel.Tag;
 import org.xml.sax.SAXException;
@@ -65,6 +66,14 @@ public class TagAdapter implements Adapter {
             d.addSetProperties("tags/entity/association/tag", new String[]{"name", "value", "type"}, new String[]{"name", "value", "type"});
             d.addSetNext("tags/entity/association/tag", "addTag");
 
+            d.addObjectCreate("tags/entity/operation", Operation.class);
+            d.addSetProperties("tags/entity/operation", new String[]{"name"}, new String[]{"name"});
+            d.addSetNext("tags/entity/operation", "addOperation");
+
+            d.addObjectCreate("tags/entity/operation/tag", Tag.class);
+            d.addSetProperties("tags/entity/operation/tag", new String[]{"name", "value", "type"}, new String[]{"name", "value", "type"});
+            d.addSetNext("tags/entity/operation/tag", "addTag");
+
             d.addObjectCreate("tags/boundary", Boundary.class);
             d.addSetProperties("tags/boundary", new String[]{"name"}, new String[]{"name"});
             d.addSetNext("tags/boundary", "addBoundary");
@@ -80,6 +89,14 @@ public class TagAdapter implements Adapter {
             d.addObjectCreate("tags/boundary/property/tag", Tag.class);
             d.addSetProperties("tags/boundary/property/tag", new String[]{"name", "value", "type"}, new String[]{"name", "value", "type"});
             d.addSetNext("tags/boundary/property/tag", "addTag");
+
+            d.addObjectCreate("tags/boundary/operation", Operation.class);
+            d.addSetProperties("tags/boundary/operation", new String[]{"name"}, new String[]{"name"});
+            d.addSetNext("tags/boundary/operation", "addOperation");
+
+            d.addObjectCreate("tags/boundary/operation/tag", Tag.class);
+            d.addSetProperties("tags/boundary/operation/tag", new String[]{"name", "value", "type"}, new String[]{"name", "value", "type"});
+            d.addSetNext("tags/boundary/operation/tag", "addTag");
 
             d.addObjectCreate("tags/enumeration", Enumeration.class);
             d.addSetProperties("tags/enumeration", new String[]{"name"}, new String[]{"name"});
@@ -161,6 +178,16 @@ public class TagAdapter implements Adapter {
                         Logger.getLogger(TagAdapter.class.getName()).log(Level.INFO, "Adding tag [" + t.getName() + ", " + t.getValue() + "] to association [" + a.getName() + "]");
                     }
             }
+
+            for (Operation o : e.getOperations()) {
+                Operation operation = entity.getOperation(o.getName());
+                if (operation == null) {
+                    throw new AdapterException("Operation [" + o.getName() + "] not found in model to be adapted.");
+                }
+                for (Tag t : o.getTags().values()) {
+                    operation.addTag(t);
+                }
+            }
         }
     }
 
@@ -182,6 +209,16 @@ public class TagAdapter implements Adapter {
                 }
                 for (Tag t : p.getTags().values()) {
                     property.addTag(t);
+                }
+            }
+
+            for (Operation o : b.getOperations()) {
+                Operation operation = boundary.getOperation(o.getName());
+                if (operation == null) {
+                    throw new AdapterException("Operation [" + o.getName() + "] not found in model to be adapted.");
+                }
+                for (Tag t : o.getTags().values()) {
+                    operation.addTag(t);
                 }
             }
         }
